@@ -10,7 +10,7 @@ public class Controller_Instantiator : MonoBehaviour
 
     void Start()
     {
-        Controller_Enemy.enemyVelocity = 2;
+        Controller_Enemy.enemyVelocity = 1;
     }
 
     void Update()

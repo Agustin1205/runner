@@ -3,13 +3,18 @@ using UnityEngine.UI;
 
 public class Controller_Hud : MonoBehaviour
 {
+    // indica si el juego ha terminado
     public static bool gameOver = false;
+
+    
     public Text distanceText;
     public Text gameOverText;
+
     private float distance = 0;
 
     void Start()
     {
+        // Al inicio del juego, reiniciar las variables y desactivar el texto de "Game Over"
         gameOver = false;
         distance = 0;
         distanceText.text = distance.ToString();
@@ -18,16 +23,21 @@ public class Controller_Hud : MonoBehaviour
 
     void Update()
     {
+        // Si el juego ha terminado
         if (gameOver)
         {
+            // texto de "Game Over" y la distancia recorrida
             Time.timeScale = 0;
-            gameOverText.text = "Game Over \n Total Distance: " + distance.ToString();
+            int roundedDistance = Mathf.RoundToInt(distance); 
+            gameOverText.text = "Game Over \n Total Distance: " + roundedDistance.ToString();
             gameOverText.gameObject.SetActive(true);
         }
         else
         {
+            
             distance += Time.deltaTime;
-            distanceText.text = distance.ToString();
+            int roundedDistance = Mathf.RoundToInt(distance);
+            distanceText.text = roundedDistance.ToString();
         }
     }
 }
